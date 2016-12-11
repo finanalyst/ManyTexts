@@ -6,7 +6,7 @@
 	<script>
 	function d_tog(id) {
             if ( document.getElementById(id).style.display = "none" ) { 
-                document.getElementById('p1').style.display="block"; 
+                document.getElementById(id).style.display="block"; 
             } else {
                 document.getElementById(id).style.display = "none";
             }
@@ -18,8 +18,8 @@
     <div class="w3-container" >
 	<div class="w3-col" style="width:50px" id="paraN_1" >
 	    <button onclick="d_tog('p1')" class="w3-btn w3-padding-tiny w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">en</button>
-	    <button onclick="document.getElementById('p2').style.display='none'" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">繁體</button>
-	    <button onclick="document.getElementById('p3').style.display='none'" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">简体</button>
+	    <button onclick="d_tog('p2')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">繁體</button>
+	    <button onclick="d_tog('p3')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">简体</button>
 	</div>
         <div class="w3-rest w3-teal" >
             <div id="p1" class="w3-container">
@@ -36,9 +36,9 @@
     
     <div class="w3-container" >
 	<div class="w3-col" style="width:50px" id="paraN_2" >
-	    <button onclick="document.getElementById('p4').style.display='none'" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">en</button>
-	    <button onclick="document.getElementById('p5').style.display='none'" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">繁體</button>
-	    <button onclick="document.getElementById('p6').style.display='none'" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">简体</button>
+	    <button onclick="d_tog('p4')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">en</button>
+	    <button onclick="d_tog('p5')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">繁體</button>
+	    <button onclick="d_tog('p6')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">简体</button>
 	</div>
         <div class="w3-rest w3-indigo w3-text-deep-orange" >
             <div id="p4" class="w3-container">
@@ -55,9 +55,9 @@
     
     <div class="w3-container" >
 	<div class="w3-col" style="width:50px" id="paraN_3" >
-	    <button onclick="document.getElementById('p7').style.display='none'" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">en</button>
-	    <button onclick="document.getElementById('p8').style.display='none'" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">繁體</button>
-	    <button onclick="document.getElementById('p9').style.display='none'" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">简体</button>
+	    <button onclick="d_tog('p7')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">en</button>
+	    <button onclick="d_tog('p8')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">繁體</button>
+	    <button onclick="d_tog('p9')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">简体</button>
 	</div>
         <div class="w3-rest w3-teal" >
             <div id="p7" class="w3-container">
@@ -74,9 +74,9 @@
     
     <div class="w3-container" >
 	<div class="w3-col" style="width:50px" id="paraN_4" >
-	    <button onclick="document.getElementById('p10').style.display='none'" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">en</button>
-	    <button onclick="document.getElementById('p11').style.display='none'" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">繁體</button>
-	    <button onclick="document.getElementById('p12').style.display='none'" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">简体</button>
+	    <button onclick="d_tog('p10')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">en</button>
+	    <button onclick="d_tog('p11')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">繁體</button>
+	    <button onclick="d_tog('p12')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">简体</button>
 	</div>
         <div class="w3-rest  w3-lightgray w3-text-brown w3-left" >
             <div id="p10" class="w3-container">
@@ -93,9 +93,9 @@
     
     <div class="w3-container" >
 	<div class="w3-col" style="width:50px" id="paraN_5" >
-	    <button onclick="document.getElementById('p13').style.display='none'" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">en</button>
-	    <button onclick="document.getElementById('p14').style.display='none'" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">繁體</button>
-	    <button onclick="document.getElementById('p15').style.display='none'" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">简体</button>
+	    <button onclick="d_tog('p13')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">en</button>
+	    <button onclick="d_tog('p14')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">繁體</button>
+	    <button onclick="d_tog('p15')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">简体</button>
 	</div>
         <div class="w3-rest  w3-lightgray w3-text-brown w3-left" >
             <div id="p13" class="w3-container">
@@ -112,9 +112,9 @@
     
     <div class="w3-container" >
 	<div class="w3-col" style="width:50px" id="paraN_6" >
-	    <button onclick="document.getElementById('p16').style.display='none'" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">en</button>
-	    <button onclick="document.getElementById('p17').style.display='none'" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">繁體</button>
-	    <button onclick="document.getElementById('p18').style.display='none'" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">简体</button>
+	    <button onclick="d_tog('p16')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">en</button>
+	    <button onclick="d_tog('p17')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">繁體</button>
+	    <button onclick="d_tog('p18')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">简体</button>
 	</div>
         <div class="w3-rest  w3-lightgray w3-text-brown" >
             <div id="p16" class="w3-container">
