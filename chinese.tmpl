@@ -1,16 +1,37 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta charset="UTF-8" />
-	<title>Perl6Citations</title>
+	<title>ManyTexts</title>
+	<link rel="stylesheet" href="w3.css" />
 	<link rel="stylesheet" href="<TMPL_VAR style>" />
+	<script>
+	function d_tog(id) {
+            if ( document.getElementById(id).style.display == "none" ) { 
+                document.getElementById(id).style.display="block"; 
+            } else {
+                document.getElementById(id).style.display = "none";
+            }
+        }
+	</script>
 </head>
 <body>
     <TMPL_LOOP texts>
-    <div class="para_container" id="paraN_<TMPL_VAR ref>" >
-        <div class="<TMPL_VAR paratype>" >
-            <p class="en" ><TMPL_VAR eng></p>
-            <p class="zh_tr"><TMPL_VAR zh_tr></p>
-            <p class="zh_sm"><TMPL_VAR zh_sm></p>
+    <div class="w3-panel w3-leftbar w3-sand" >
+	<div class="w3-col" style="width:35px">
+	    <button onclick="d_tog('p_<TMPL_VAR ref>_en')" class="w3-btn w3-padding-tiny w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">en</button>
+	    <button onclick="d_tog('p_<TMPL_VAR ref>_zh_tr')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">繁體</button>
+	    <button onclick="d_tog('p_<TMPL_VAR ref>_zh_sm')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">简体</button>
+	</div>
+        <div class="w3-rest w3-border w3-round-xlarge <TMPL_VAR paratype>" >
+            <div id="p_<TMPL_VAR ref>_en" >
+                <p lang="en" ><TMPL_VAR eng></p>
+            </div>
+            <div id="p_<TMPL_VAR ref>_zh_tr" >
+                <p lang="zh_tr"><TMPL_VAR zh_tr></p>
+            </div>
+            <div id="p_<TMPL_VAR ref>_zh_sm" >
+                <p lang="zh_sm"><TMPL_VAR zh_sm></p>
+            </div>
         </div>
     </div>
     </TMPL_LOOP>
