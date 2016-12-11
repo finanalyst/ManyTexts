@@ -3,12 +3,21 @@
 	<meta charset="UTF-8" />
 	<title>ManyTexts</title>
 	<link rel="stylesheet" href="w3.css" />
+	<script>
+	function d_tog(id) {
+            if ( document.getElementById(id).style.display = "none" ) { 
+                document.getElementById('p1').style.display="block"; 
+            } else {
+                document.getElementById(id).style.display = "none";
+            }
+        }
+	</script>
 </head>
 <body>
     
     <div class="w3-container" >
 	<div class="w3-col" style="width:50px" id="paraN_1" >
-	    <button onclick="document.getElementById('p1').style.display='none'" class="w3-btn w3-padding-tiny w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">en</button>
+	    <button onclick="d_tog('p1')" class="w3-btn w3-padding-tiny w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">en</button>
 	    <button onclick="document.getElementById('p2').style.display='none'" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">繁體</button>
 	    <button onclick="document.getElementById('p3').style.display='none'" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">简体</button>
 	</div>
