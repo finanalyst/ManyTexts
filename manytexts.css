@@ -22,5 +22,8 @@
     
 }
 
-.Section_text div p {
+.Subheader_number div p {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.8em;
 }
