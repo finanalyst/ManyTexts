@@ -1,9 +1,26 @@
 /* first css */
 
-.Title_text p {
+.Title_text div p {
     text-align: center;
+    font-weight: bold;
+    font-size: 2.5em;
 }
 
-.Author_name p {
+.Author_name div p {
     text-align: center;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.Index_header_text div p {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.8em;
+}
+
+.Index_table_text div p {
+    
+}
+
+.Section_text div p {
 }
