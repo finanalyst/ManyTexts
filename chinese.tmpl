@@ -1,0 +1,18 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Perl6Citations</title>
+	<link rel="stylesheet" href="<TMPL_VAR style>" />
+</head>
+<body>
+    <TMPL_LOOP texts>
+    <div class="para_container" id="paraN_<TMPL_VAR ref>" >
+        <div class="<TMPL_VAR paratype>" >
+            <p class="en" ><TMPL_VAR eng></p>
+            <p class="zh_tr"><TMPL_VAR zh_tr></p>
+            <p class="zh_sm"><TMPL_VAR zh_sm></p>
+        </div>
+    </div>
+    </TMPL_LOOP>
+</body>
+</html>
