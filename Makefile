@@ -7,3 +7,8 @@ compile:
 
 run:
 	perl6 $(PR).p6 --css=$(CSS) $(FN)
+	
+send:
+	cd ../ManyTexts_html
+	git commit . -m updating
+	git push
