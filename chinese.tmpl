@@ -16,23 +16,39 @@
 </head>
 <body>
     <TMPL_LOOP texts>
-    <div class="w3-panel w3-leftbar w3-sand" >
-	<div class="w3-col" style="width:35px">
-	    <button onclick="d_tog('p_<TMPL_VAR ref>_en')" class="w3-btn w3-padding-tiny w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">en</button>
-	    <button onclick="d_tog('p_<TMPL_VAR ref>_zh_tr')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">繁體</button>
-	    <button onclick="d_tog('p_<TMPL_VAR ref>_zh_sm')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">简体</button>
-	</div>
-        <div class="w3-rest w3-border w3-round-xlarge <TMPL_VAR paratype>" >
-            <div id="p_<TMPL_VAR ref>_en" >
+    <div class="w3-panel w3-leftbar w3-sand <TMPL_VAR paratype>" >
+        <TMPL_IF num>
+        <div>
+            <div class="w3-rest w3-border w3-round-xlarge" id="p_<TMPL_VAR ref>_en" >
                 <p lang="en" ><TMPL_VAR eng></p>
             </div>
-            <div id="p_<TMPL_VAR ref>_zh_tr" >
+        </div>
+        <TMPL_ELSE>
+       <div>
+            <div class="w3-col" style="width:35px">
+                <button onclick="d_tog('p_<TMPL_VAR ref>_en')" class="w3-btn w3-padding-tiny w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">en</button>
+            </div>
+            <div class="w3-rest w3-border w3-round-xlarge" id="p_<TMPL_VAR ref>_en" >
+                <p lang="en" ><TMPL_VAR eng></p>
+            </div>
+        </div>
+        <div>
+            <div class="w3-col" style="width:35px">
+                <button onclick="d_tog('p_<TMPL_VAR ref>_zh_tr')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">繁體</button>
+            </div>
+            <div class="w3-rest w3-border w3-round-xlarge" id="p_<TMPL_VAR ref>_zh_tr" >
                 <p lang="zh_tr"><TMPL_VAR zh_tr></p>
             </div>
-            <div id="p_<TMPL_VAR ref>_zh_sm" >
+        </div>
+        <div>
+            <div class="w3-col" style="width:35px">
+                <button onclick="d_tog('p_<TMPL_VAR ref>_zh_sm')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">简体</button>
+            </div>
+            <div class="w3-rest w3-border w3-round-xlarge" id="p_<TMPL_VAR ref>_zh_sm" >
                 <p lang="zh_sm"><TMPL_VAR zh_sm></p>
             </div>
         </div>
+        </TMPL_IF>
     </div>
     </TMPL_LOOP>
 </body>

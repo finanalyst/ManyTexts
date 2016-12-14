@@ -1,5 +1,5 @@
 PR=makehtml
-FN=hwt.csv
+FN=hw.csv
 CSS=manytexts.css
 
 compile:
