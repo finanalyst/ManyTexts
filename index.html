@@ -21,7 +21,7 @@
                         }
                     } else {
                         toggle_en = true;
-                        document.getElementById('main-en').color="green";
+                        document.getElementById('main-en').style.background-color="green";
                         Ldivs = document.getElementsByClassName("manytxt-en");
                         for (var i=0; i< Ldivs.length; i++) {
                             Ldivs[i].style.display="block";
@@ -63,7 +63,7 @@
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
-                <button onclick="d_tog('p_1_en')" class="w3-btn w3-padding-tiny w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">en</button>
+                <button onclick="d_tog('p_1_en')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">en</button>
             </div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_1_en" >
                 <p lang="en" >The Hidden Words </p>
