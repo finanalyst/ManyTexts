@@ -14,14 +14,14 @@
                 case 'en':
                     if ( toggle_en ) {
                         toggle_en = false;
-                        document.getElementById('main-en').inner="English &#x2612;";
+                        document.getElementById('main-en').innerHTML="English &#x2612;";
                         Ldivs = document.getElementsByClassName("manytxt-en");
                         for (var i=0; i< Ldivs.length; i++) {
                             Ldivs[i].style.display="none";
                         }
                     } else {
                         toggle_en = true;
-                        document.getElementById('main-en').inner="English &#x2611;";
+                        document.getElementById('main-en').innerHTML="English &#x2611;";
                         Ldivs = document.getElementsByClassName("manytxt-en");
                         for (var i=0; i< Ldivs.length; i++) {
                             Ldivs[i].style.display="block";
