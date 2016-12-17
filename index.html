@@ -6,6 +6,35 @@
 	<link rel="stylesheet" href="w3.css" />
 	<link rel="stylesheet" href="manytexts.css" />
 	<script>
+	var toggle_en = true;
+	var toggle_zh_tr = true;
+	var toggle_zh_sm = true;
+	function btn-effect( lang ) {
+            switch (lang) {
+                case 'en':
+                    if ( toggle_en ) {
+                        toggle_en = false;
+                        document.getElementById('main-en').color="red";
+                        Ldivs = document.getElementsByClassName("manytxt-en");
+                        for (var i=0; i< Ldivs.length; i++) {
+                            Ldivs[i].style.display="none";
+                        }
+                    } else {
+                        toggle_en = true;
+                        document.getElementById('main-en').color="green";
+                        Ldivs = document.getElementsByClassName("manytxt-en");
+                        for (var i=0; i< Ldivs.length; i++) {
+                            Ldivs[i].style.display="block";
+                        }
+                    }
+                    break;
+                    case: 'zh-sm':
+                    break;
+                    case: 'zh-sm':
+                    break;
+                }
+            }
+	}
 	function d_tog(id) {
             if ( document.getElementById(id).style.display == "none" ) { 
                 document.getElementById(id).style.display="block"; 
@@ -22,12 +51,18 @@
         <li class="w3-left w3-hide-small"><a href="#" class="w3-hover-teal"><img src="library.svg"/></a></li>
         <li class="w3-navitem"><img src="manytextslogo.png" class="w3-round-large""/></li>
         <li class="w3-right w3-hide-small" ><a href="#" class="w3-hover-teal"><img src="books.svg"/></a></li>
-        <li class="w3-right w3-hide-small" ><a href="#" class="w3-hover-teal"><img src="language.svg"/></a></li>
+        <li class="w3-right w3-hide-small w3-dropdown-hover" ><a href="#" class="w3-hover-teal"><img src="language.svg"/></a>
+            <div class="w3-dropdown-content">
+                <button onclick="btn-effect('en')" id="main-en">English</button>
+                <button onclick="btn-effect('zh-tr')" id="main-zh-tr">ZH-TR</button>
+                <button onclick="btn-effect('zh-tr')" id="main-zh-tr">ZH-TR</button>
+            </div>
+        </li>
     </ul>
 </div>
     <div class="w3-panel w3-leftbar w3-sand Title_text" >
         
-       <div>
+       <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
                 <button onclick="d_tog('p_1_en')" class="w3-btn w3-padding-tiny w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">en</button>
             </div>
@@ -56,7 +91,7 @@
     
     <div class="w3-panel w3-leftbar w3-sand Author_name" >
         
-       <div>
+       <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
                 <button onclick="d_tog('p_2_en')" class="w3-btn w3-padding-tiny w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">en</button>
             </div>
@@ -85,7 +120,7 @@
     
     <div class="w3-panel w3-leftbar w3-sand Index_header_text" >
         
-       <div>
+       <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
                 <button onclick="d_tog('p_3_en')" class="w3-btn w3-padding-tiny w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">en</button>
             </div>
@@ -114,7 +149,7 @@
     
     <div class="w3-panel w3-leftbar w3-sand Index_table_text" >
         
-       <div>
+       <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
                 <button onclick="d_tog('p_4_en')" class="w3-btn w3-padding-tiny w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">en</button>
             </div>
@@ -143,7 +178,7 @@
     
     <div class="w3-panel w3-leftbar w3-sand Index_table_text" >
         
-       <div>
+       <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
                 <button onclick="d_tog('p_5_en')" class="w3-btn w3-padding-tiny w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">en</button>
             </div>
