@@ -14,7 +14,7 @@
                 case 'en':
                     if ( toggle_en ) {
                         toggle_en = false;
-                        document.getElementById('main-en').innerHTML="English &#x2612;";
+                        this.innerHTML="English &#x2612;";
                         Ldivs = document.getElementsByClassName("manytxt-en");
                         for (var i=0; i< Ldivs.length; i++) {
                             Ldivs[i].style.display="none";
@@ -64,7 +64,7 @@
             </div>
         </li>
     </ul>
-</div>
+    </div>
     <div class="w3-panel w3-leftbar w3-sand Title_text" >
         
        <div class="manytxt-en">
