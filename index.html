@@ -46,7 +46,13 @@
 <body>
     <div class="w3-container w3-top">
     <ul class="w3-navbar w3-center">
-        <li class="w3-hide-medium w3-hide-large w3-opennav w3-left"><a href="#" class="w3-hover-teal"><img src="bookshelf.svg"/></a></li>
+        <li class="w3-hide-medium w3-hide-large w3-opennav w3-left w3-dropdown-hover"><a href="#" class="w3-hover-teal"><img src="bookshelf.svg"/></a>
+            <div class="w3-dropdown-content">
+                <button onclick="btnEffect('en')" id="main-en" class="w3-btn w3-round-large w3-large w3-blue w3-hover-khaki">English &#x2611;</button>
+                <button onclick="btnEffect('zh-tr')" id="main-zh-tr" class="w3-btn w3-round-large w3-large w3-blue w3-hover-khaki">繁體 &#x2611;</button>
+                <button onclick="btnEffect('zh-sm)" id="main-zh-sm" class="w3-btn w3-round-large w3-large w3-blue w3-hover-khaki">简体 &#x2611;</button>
+            </div>
+        </li>
         <li class="w3-left w3-hide-small"><a href="#" class="w3-hover-teal"><img src="library.svg"/></a></li>
         <li class="w3-navitem"><img src="manytextslogo.png" class="w3-round-large"/></li>
         <li class="w3-right w3-hide-small" ><a href="#" class="w3-hover-teal"><img src="books.svg"/></a></li>
