@@ -9,8 +9,8 @@
 	var toggle_en = true;
 	var toggle_zh_tr = true;
 	var toggle_zh_sm = true;
-	function btn-effect( lang ) {
-            switch (lang) {
+	function btnEffect( L_in ) {
+            switch (L_in) {
                 case 'en':
                     if ( toggle_en ) {
                         toggle_en = false;
@@ -53,9 +53,9 @@
         <li class="w3-right w3-hide-small" ><a href="#" class="w3-hover-teal"><img src="books.svg"/></a></li>
         <li class="w3-right w3-hide-small w3-dropdown-hover" ><a href="#" class="w3-hover-teal"><img src="language.svg"/></a>
             <div class="w3-dropdown-content">
-                <button onclick="btn-effect('en')" id="main-en">English</button>
-                <button onclick="btn-effect('zh-tr')" id="main-zh-tr">ZH-TR</button>
-                <button onclick="btn-effect('zh-tr')" id="main-zh-tr">ZH-TR</button>
+                <button onclick="btnEffect('en')" id="main-en">English</button>
+                <button onclick="btnEffect('zh-tr')" id="main-zh-tr">ZH-TR</button>
+                <button onclick="btnEffect('zh-tr')" id="main-zh-tr">ZH-TR</button>
             </div>
         </li>
     </ul>
