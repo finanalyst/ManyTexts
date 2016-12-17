@@ -8,13 +8,13 @@
 	var toggle_en = true;
 	var toggle_zh_tr = true;
 	var toggle_zh_sm = true;
-	function btnEffect( L_in ) {
+	function btnEffect( L_in, B_id ) {
             switch (L_in) {
                 case 'en':
                     Ldivs = document.getElementsByClassName("manytxt-en");
                     if ( toggle_en ) {
                         toggle_en = false;
-                        this.innerHTML="English &#x2612;";
+                        document.getElementById(B_id).innerHTML="English &#x2612;";
                         for (var i=0; i< Ldivs.length; i++) {
                             Ldivs[i].style.display="none";
                         }
@@ -30,13 +30,13 @@
                     Ldivs = document.getElementsByClassName("manytxt-zh-tr");
                     if ( toggle_zh_tr ) {
                         toggle_zh_tr = false;
-                        document.getElementById('main-zh-tr').innerHTML="简体 &#x2612;";
+                        document.getElementById(B_id).innerHTML="简体 &#x2612;";
                         for (var i=0; i< Ldivs.length; i++) {
                             Ldivs[i].style.display="none";
                         }
                     } else {
                         toggle_zh_tr = true;
-                        document.getElementById('main-zh-tr').innerHTML="简体 &#x2611;";
+                       document.getElementById(B_id).innerHTML="简体 &#x2611;";
                         for (var i=0; i< Ldivs.length; i++) {
                             Ldivs[i].style.display="block";
                         }
@@ -46,13 +46,13 @@
                     Ldivs = document.getElementsByClassName("manytxt-zh-sm");
                     if ( toggle_zh_sm ) {
                         toggle_zh_sm = false;
-                        document.getElementById('main-zh-sm').innerHTML="繁體 &#x2612;";
+                        document.getElementById(B_id).innerHTML="繁體 &#x2612;";
                         for (var i=0; i< Ldivs.length; i++) {
                             Ldivs[i].style.display="none";
                         }
                     } else {
                         toggle_zh_sm = true;
-                        document.getElementById('main-zh-sm').innerHTML="繁體 &#x2611;";
+                        document.getElementById(B_id).innerHTML="繁體 &#x2611;";
                         for (var i=0; i< Ldivs.length; i++) {
                             Ldivs[i].style.display="block";
                         }
@@ -75,9 +75,9 @@
         <ul class="w3-navbar w3-center">
             <li class="w3-hide-medium w3-hide-large w3-opennav w3-left w3-dropdown-hover"><a href="#" class="w3-hover-teal"><img src="bookshelf.svg"/></a>
                 <div class="w3-dropdown-content">
-                    <button onclick="btnEffect('en')" id="main-en" class="w3-btn w3-round-large w3-large w3-blue w3-hover-khaki">English &#x2611;</button>
-                    <button onclick="btnEffect('zh-tr')" id="main-zh-tr" class="w3-btn w3-round-large w3-large w3-blue w3-hover-khaki">简体 &#x2611;</button>
-                    <button onclick="btnEffect('zh-sm)" id="main-zh-sm" class="w3-btn w3-round-large w3-large w3-blue w3-hover-khaki">繁體 &#x2611;</button>
+                    <button onclick="btnEffect('en','main-en-a')" id="main-en-a" class="w3-btn w3-round-large w3-large w3-blue w3-hover-khaki">English &#x2611;</button>
+                    <button onclick="btnEffect('zh-tr','main-zh-tr-a')" id="main-zh-tr-a" class="w3-btn w3-round-large w3-large w3-blue w3-hover-khaki">简体 &#x2611;</button>
+                    <button onclick="btnEffect('zh-sm','main-zh-sm-a')" id="main-zh-sm-a" class="w3-btn w3-round-large w3-large w3-blue w3-hover-khaki">繁體 &#x2611;</button>
                 </div>
             </li>
             <li class="w3-left w3-hide-small"><a href="#" class="w3-hover-teal"><img src="library.svg"/></a></li>
@@ -85,9 +85,9 @@
             <li class="w3-right w3-hide-small" ><a href="#" class="w3-hover-teal"><img src="books.svg"/></a></li>
             <li class="w3-right w3-hide-small w3-dropdown-hover" ><a href="#" class="w3-hover-teal"><img src="language.svg"/></a>
                 <div class="w3-dropdown-content">
-                    <button onclick="btnEffect('en')" id="main-en" class="w3-btn w3-round-large w3-large w3-blue w3-hover-khaki">English &#x2611;</button>
-                    <button onclick="btnEffect('zh-tr')" id="main-zh-tr" class="w3-btn w3-round-large w3-large w3-blue w3-hover-khaki">简体 &#x2611;</button>
-                    <button onclick="btnEffect('zh-sm)" id="main-zh-sm" class="w3-btn w3-round-large w3-large w3-blue w3-hover-khaki">繁體 &#x2611;</button>
+                    <button onclick="btnEffect('en','main-en-b')" id="main-en-b" class="w3-btn w3-round-large w3-large w3-blue w3-hover-khaki">English &#x2611;</button>
+                    <button onclick="btnEffect('zh-tr','main-zh-tr-b')" id="main-zh-tr-b" class="w3-btn w3-round-large w3-large w3-blue w3-hover-khaki">简体 &#x2611;</button>
+                    <button onclick="btnEffect('zh-sm','main-zh-sm-b')" id="main-zh-sm-b" class="w3-btn w3-round-large w3-large w3-blue w3-hover-khaki">繁體 &#x2611;</button>
                 </div>
             </li>
         </ul>
