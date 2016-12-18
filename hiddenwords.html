@@ -5,6 +5,40 @@
 	<link rel="stylesheet" href="w3.css" />
 	<link rel="stylesheet" href="manytexts.css" />
 	<script>
+	var textSize = 0;
+	var textCurCol = 8;
+	var backCurCol = 4;
+	var divClasses = [ 
+            "w3-medium", "w3-xlarge", "w3-xxlarge",
+            "w3-white", "w3-sand","w3-light-grey","w3-indigo","w3-black",
+            "w3-text-black","w3-text-brown","w3-text-aqua","w3-text-green","w3-text-white"
+	];
+	function textSizeEffect( size ) {
+            if ( size == textSize ) {
+                return; // no need to do anything
+            } else {
+                classSwap( textSize, size );
+            }
+            textSize = size;
+	}
+	function textCombination( texCol, bkCol ) {
+            if ( texCol != textCurCol ) {
+                classSwap( textCurCol, texCol );
+                textCurCol = texCol;
+            }
+            if ( bkCol != backCurCol ) {
+                classSwap( backCurCol, bkCol );
+                backCurCol = bkCol;
+            }
+            textSize = size;
+	}
+	function classSwap( vFrom, vTo ){
+                divlist = document.getElementsByClassName('manytxt-top');
+                for (var i = 0; i < divlist.length; i++) {
+                    divlist[i].classList.toggle( divClasses[ vFrom] , false );
+                    divlist[i].classList.toggle( divClasses[ vTo] , true );
+                }
+	}
 	var toggle_en = true;
 	var toggle_zh_tr = true;
 	var toggle_zh_sm = true;
@@ -69,9 +103,9 @@
         }
 	</script>
 </head>
-<body>
+<body >
         <!-- Navigation bar code -->
-    <div class="w3-container w3-top">
+    <div class="w3-container w3-top ">
         <ul class="w3-navbar w3-center">
             <li class="w3-hide-medium w3-hide-large w3-opennav w3-left w3-dropdown-hover"><a href="#" class="w3-hover-teal"><img src="extras.png"/></a>
                 <div class="w3-dropdown-content">
@@ -79,11 +113,13 @@
                     <button onclick="btnEffect('en','main-en-a')" id="main-en-a" class="w3-btn w3-round-large w3-large w3-blue w3-hover-khaki">English &#x2611;</button>
                     <button onclick="btnEffect('zh-tr','main-zh-tr-a')" id="main-zh-tr-a" class="w3-btn w3-round-large w3-large w3-blue w3-hover-khaki">简体 &#x2611;</button>
                     <button onclick="btnEffect('zh-sm','main-zh-sm-a')" id="main-zh-sm-a" class="w3-btn w3-round-large w3-large w3-blue w3-hover-khaki">繁體 &#x2611;</button>
+                   <a href="#" class="w3-hover-teal"><img src="colors.png" onclick="document.getElementById('manytxt-modal').style.display='block'"/></a>
                 </div>
             </li>
             <li class="w3-left w3-hide-small"><a href="library.html" class="w3-hover-teal"><img src="books.svg"/></a></li>
             <li class="w3-navitem"><img src="manytextslogo.png" class="w3-round-large"/></li>
-            <li class="w3-right w3-hide-small" ><a href="#" class="w3-hover-teal"><img src="colors.png"/></a></li>
+            <li class="w3-right w3-hide-small w3-dropdown-hover" ><a href="#" class="w3-hover-teal"><img src="colors.png" onclick="document.getElementById('manytxt-modal').style.display='block'"/></a>
+            </li>
             <li class="w3-right w3-hide-small w3-dropdown-hover" ><a href="#" class="w3-hover-teal"><img src="language.svg"/></a>
                 <div class="w3-dropdown-content">
                     <button onclick="btnEffect('en','main-en-b')" id="main-en-b" class="w3-btn w3-round-large w3-large w3-blue w3-hover-khaki">English &#x2611;</button>
@@ -93,13 +129,30 @@
             </li>
         </ul>
     </div>
+    <div class="w3-modal" id="manytxt-modal">
+        <div class="w3-modal-content">
+            <div class="w3-container manytxt-top">
+                <span onclick="document.getElementById('manytxt-modal').style.display='none'" class="w3-closebtn">&times;</span>
+                <button onclick="textSizeEffect(0)" class="w3-btn w3-round-large w3-medium w3-blue w3-hover-khaki ">English 简体 繁體</button>
+                <button onclick="textSizeEffect(1)" class="w3-btn w3-round-large w3-xlarge w3-blue w3-hover-khaki">English 简体 繁體</button>
+                <button onclick="textSizeEffect(2)" class="w3-btn w3-round-large w3-xxlarge w3-blue w3-hover-khaki">English 简体 繁體</button>
+                <button onclick="textCombination(8,4)" class="w3-btn w3-round-large w3-blue w3-hover-text-black w3-hover-sand">English 简体 繁體</button>
+                <button onclick="textCombination(12,7)" class="w3-btn w3-round-large w3-blue w3-hover-text-white w3-hover-black">English 简体 繁體</button>
+                <button onclick="textCombination(10,7)" class="w3-btn w3-round-large w3-blue w3-hover-text-aqua w3-hover-black">English 简体 繁體</button>
+                <button onclick="textCombination(9,5)" class="w3-btn w3-round-large w3-blue w3-hover-text-brown w3-hover-light-grey">English 简体 繁體</button>
+                <button onclick="textCombination(11,6)" class="w3-btn w3-round-large w3-blue w3-hover-text-green w3-hover-indigo">English 简体 繁體</button>
+                <p style="text-align:center;">English 简体 繁體</p>
+            </div>
+        </div>
+    </div>
+<!-- End of navigation bar -->
     <div class="w3-panel w3-sand w3-padding-16 w3-center">
         <a href="index.html">
-            <img src="manytextslogo.png" style="align:center"/>
+            <img src="manytextslogo.png"/>
         </a>
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand BookTitle" >
+    <div class="w3-panel w3-leftbar w3-sand BookTitle manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -128,7 +181,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand BookAuthor" >
+    <div class="w3-panel w3-leftbar w3-sand BookAuthor manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -157,7 +210,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand SectionText" >
+    <div class="w3-panel w3-leftbar w3-sand SectionText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -186,7 +239,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -215,7 +268,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand ExLogue" >
+    <div class="w3-panel w3-leftbar w3-sand ExLogue manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -244,7 +297,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_9_en" >
@@ -254,7 +307,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -283,7 +336,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -312,7 +365,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_12_en" >
@@ -322,7 +375,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -351,7 +404,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -380,7 +433,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_15_en" >
@@ -390,7 +443,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -419,7 +472,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -448,7 +501,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_18_en" >
@@ -458,7 +511,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -487,7 +540,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -516,7 +569,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_21_en" >
@@ -526,7 +579,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -555,7 +608,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -584,7 +637,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_24_en" >
@@ -594,7 +647,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -623,7 +676,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -652,7 +705,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_27_en" >
@@ -662,7 +715,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -691,7 +744,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -720,7 +773,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_30_en" >
@@ -730,7 +783,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -759,7 +812,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -788,7 +841,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_33_en" >
@@ -798,7 +851,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -827,7 +880,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -856,7 +909,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_36_en" >
@@ -866,7 +919,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -895,7 +948,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -924,7 +977,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_39_en" >
@@ -934,7 +987,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -963,7 +1016,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -992,7 +1045,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_42_en" >
@@ -1002,7 +1055,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1031,7 +1084,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1060,7 +1113,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_45_en" >
@@ -1070,7 +1123,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1099,7 +1152,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1128,7 +1181,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_48_en" >
@@ -1138,7 +1191,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1167,7 +1220,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1196,7 +1249,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_51_en" >
@@ -1206,7 +1259,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1235,7 +1288,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1264,7 +1317,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_54_en" >
@@ -1274,7 +1327,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1303,7 +1356,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1332,7 +1385,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_57_en" >
@@ -1342,7 +1395,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1371,7 +1424,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1400,7 +1453,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_60_en" >
@@ -1410,7 +1463,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1439,7 +1492,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1468,7 +1521,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_63_en" >
@@ -1478,7 +1531,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1507,7 +1560,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1536,7 +1589,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_66_en" >
@@ -1546,7 +1599,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1575,7 +1628,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1604,7 +1657,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_69_en" >
@@ -1614,7 +1667,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1643,7 +1696,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1672,7 +1725,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_72_en" >
@@ -1682,7 +1735,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1711,7 +1764,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1740,7 +1793,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_75_en" >
@@ -1750,7 +1803,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1779,7 +1832,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1808,7 +1861,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_78_en" >
@@ -1818,7 +1871,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1847,7 +1900,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1876,7 +1929,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_81_en" >
@@ -1886,7 +1939,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1915,7 +1968,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1944,7 +1997,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_84_en" >
@@ -1954,7 +2007,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -1983,7 +2036,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2012,7 +2065,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_87_en" >
@@ -2022,7 +2075,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2051,7 +2104,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2080,7 +2133,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_90_en" >
@@ -2090,7 +2143,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2119,7 +2172,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2148,7 +2201,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_93_en" >
@@ -2158,7 +2211,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2187,7 +2240,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2216,7 +2269,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_96_en" >
@@ -2226,7 +2279,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2255,7 +2308,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2284,7 +2337,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_99_en" >
@@ -2294,7 +2347,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2323,7 +2376,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2352,7 +2405,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_102_en" >
@@ -2362,7 +2415,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2391,7 +2444,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2420,7 +2473,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_105_en" >
@@ -2430,7 +2483,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2459,7 +2512,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2488,7 +2541,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_108_en" >
@@ -2498,7 +2551,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2527,7 +2580,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2556,7 +2609,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_111_en" >
@@ -2566,7 +2619,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2595,7 +2648,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2624,7 +2677,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_114_en" >
@@ -2634,7 +2687,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2663,7 +2716,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2692,7 +2745,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_117_en" >
@@ -2702,7 +2755,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2731,7 +2784,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2760,7 +2813,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_120_en" >
@@ -2770,7 +2823,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2799,7 +2852,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2828,7 +2881,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_123_en" >
@@ -2838,7 +2891,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2867,7 +2920,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2896,7 +2949,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_126_en" >
@@ -2906,7 +2959,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2935,7 +2988,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -2964,7 +3017,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_129_en" >
@@ -2974,7 +3027,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3003,7 +3056,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3032,7 +3085,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_132_en" >
@@ -3042,7 +3095,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3071,7 +3124,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3100,7 +3153,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_135_en" >
@@ -3110,7 +3163,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3139,7 +3192,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3168,7 +3221,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_138_en" >
@@ -3178,7 +3231,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3207,7 +3260,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3236,7 +3289,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_141_en" >
@@ -3246,7 +3299,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3275,7 +3328,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3304,7 +3357,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_144_en" >
@@ -3314,7 +3367,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3343,7 +3396,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3372,7 +3425,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_147_en" >
@@ -3382,7 +3435,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3411,7 +3464,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3440,7 +3493,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_150_en" >
@@ -3450,7 +3503,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3479,7 +3532,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3508,7 +3561,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_153_en" >
@@ -3518,7 +3571,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3547,7 +3600,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3576,7 +3629,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_156_en" >
@@ -3586,7 +3639,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3615,7 +3668,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3644,7 +3697,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_159_en" >
@@ -3654,7 +3707,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3683,7 +3736,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3712,7 +3765,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_162_en" >
@@ -3722,7 +3775,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3751,7 +3804,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3780,7 +3833,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_165_en" >
@@ -3790,7 +3843,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3819,7 +3872,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3848,7 +3901,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_168_en" >
@@ -3858,7 +3911,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3887,7 +3940,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3916,7 +3969,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_171_en" >
@@ -3926,7 +3979,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3955,7 +4008,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -3984,7 +4037,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_174_en" >
@@ -3994,7 +4047,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4023,7 +4076,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4052,7 +4105,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_177_en" >
@@ -4062,7 +4115,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4091,7 +4144,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4120,7 +4173,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_180_en" >
@@ -4130,7 +4183,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4159,7 +4212,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4188,7 +4241,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_183_en" >
@@ -4198,7 +4251,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4227,7 +4280,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4256,7 +4309,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_186_en" >
@@ -4266,7 +4319,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4295,7 +4348,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4324,7 +4377,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_189_en" >
@@ -4334,7 +4387,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4363,7 +4416,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4392,7 +4445,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_192_en" >
@@ -4402,7 +4455,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4431,7 +4484,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4460,7 +4513,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_195_en" >
@@ -4470,7 +4523,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4499,7 +4552,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4528,7 +4581,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_198_en" >
@@ -4538,7 +4591,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4567,7 +4620,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4596,7 +4649,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_201_en" >
@@ -4606,7 +4659,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4635,7 +4688,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4664,7 +4717,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_204_en" >
@@ -4674,7 +4727,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4703,7 +4756,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4732,7 +4785,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_207_en" >
@@ -4742,7 +4795,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4771,7 +4824,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4800,7 +4853,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_210_en" >
@@ -4810,7 +4863,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4839,7 +4892,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4868,7 +4921,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_213_en" >
@@ -4878,7 +4931,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4907,7 +4960,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4936,7 +4989,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_216_en" >
@@ -4946,7 +4999,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -4975,7 +5028,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5004,7 +5057,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_219_en" >
@@ -5014,7 +5067,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5043,7 +5096,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5072,7 +5125,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand SectionText" >
+    <div class="w3-panel w3-leftbar w3-sand SectionText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5101,7 +5154,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5130,7 +5183,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_224_en" >
@@ -5140,7 +5193,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5169,7 +5222,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5198,7 +5251,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_227_en" >
@@ -5208,7 +5261,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5237,7 +5290,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5266,7 +5319,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_230_en" >
@@ -5276,7 +5329,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5305,7 +5358,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5334,7 +5387,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_233_en" >
@@ -5344,7 +5397,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5373,7 +5426,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5402,7 +5455,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_236_en" >
@@ -5412,7 +5465,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5441,7 +5494,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5470,7 +5523,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_239_en" >
@@ -5480,7 +5533,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5509,7 +5562,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5538,7 +5591,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_242_en" >
@@ -5548,7 +5601,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5577,7 +5630,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5606,7 +5659,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_245_en" >
@@ -5616,7 +5669,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5645,7 +5698,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5674,7 +5727,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_248_en" >
@@ -5684,7 +5737,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5713,7 +5766,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5742,7 +5795,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_251_en" >
@@ -5752,7 +5805,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5781,7 +5834,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5810,7 +5863,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_254_en" >
@@ -5820,7 +5873,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5849,7 +5902,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5878,7 +5931,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_257_en" >
@@ -5888,7 +5941,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5917,7 +5970,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5946,7 +5999,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_260_en" >
@@ -5956,7 +6009,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -5985,7 +6038,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6014,7 +6067,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_263_en" >
@@ -6024,7 +6077,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6053,7 +6106,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6082,7 +6135,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_266_en" >
@@ -6092,7 +6145,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6121,7 +6174,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6150,7 +6203,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_269_en" >
@@ -6160,7 +6213,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6189,7 +6242,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6218,7 +6271,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_272_en" >
@@ -6228,7 +6281,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6257,7 +6310,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6286,7 +6339,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_275_en" >
@@ -6296,7 +6349,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6325,7 +6378,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6354,7 +6407,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_278_en" >
@@ -6364,7 +6417,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6393,7 +6446,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6422,7 +6475,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Additional line" >
+    <div class="w3-panel w3-leftbar w3-sand Additional line manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6451,7 +6504,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_282_en" >
@@ -6461,7 +6514,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6490,7 +6543,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6519,7 +6572,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_285_en" >
@@ -6529,7 +6582,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6558,7 +6611,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6587,7 +6640,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_288_en" >
@@ -6597,7 +6650,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6626,7 +6679,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6655,7 +6708,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_291_en" >
@@ -6665,7 +6718,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6694,7 +6747,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6723,7 +6776,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_294_en" >
@@ -6733,7 +6786,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6762,7 +6815,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6791,7 +6844,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_297_en" >
@@ -6801,7 +6854,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6830,7 +6883,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6859,7 +6912,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_300_en" >
@@ -6869,7 +6922,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6898,7 +6951,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6927,7 +6980,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_303_en" >
@@ -6937,7 +6990,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6966,7 +7019,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -6995,7 +7048,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_306_en" >
@@ -7005,7 +7058,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7034,7 +7087,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7063,7 +7116,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_309_en" >
@@ -7073,7 +7126,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7102,7 +7155,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7131,7 +7184,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_312_en" >
@@ -7141,7 +7194,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7170,7 +7223,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7199,7 +7252,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_315_en" >
@@ -7209,7 +7262,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7238,7 +7291,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7267,7 +7320,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_318_en" >
@@ -7277,7 +7330,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7306,7 +7359,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7335,7 +7388,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_321_en" >
@@ -7345,7 +7398,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7374,7 +7427,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7403,7 +7456,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_324_en" >
@@ -7413,7 +7466,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7442,7 +7495,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7471,7 +7524,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_327_en" >
@@ -7481,7 +7534,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7510,7 +7563,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7539,7 +7592,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_330_en" >
@@ -7549,7 +7602,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7578,7 +7631,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7607,7 +7660,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Additional line" >
+    <div class="w3-panel w3-leftbar w3-sand Additional line manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7636,7 +7689,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_334_en" >
@@ -7646,7 +7699,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7675,7 +7728,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7704,7 +7757,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_337_en" >
@@ -7714,7 +7767,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7743,7 +7796,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7772,7 +7825,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_340_en" >
@@ -7782,7 +7835,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7811,7 +7864,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7840,7 +7893,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_343_en" >
@@ -7850,7 +7903,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7879,7 +7932,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7908,7 +7961,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_346_en" >
@@ -7918,7 +7971,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7947,7 +8000,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -7976,7 +8029,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_349_en" >
@@ -7986,7 +8039,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8015,7 +8068,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8044,7 +8097,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_352_en" >
@@ -8054,7 +8107,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8083,7 +8136,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8112,7 +8165,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_355_en" >
@@ -8122,7 +8175,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8151,7 +8204,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8180,7 +8233,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_358_en" >
@@ -8190,7 +8243,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8219,7 +8272,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8248,7 +8301,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_361_en" >
@@ -8258,7 +8311,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8287,7 +8340,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8316,7 +8369,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_364_en" >
@@ -8326,7 +8379,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8355,7 +8408,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8384,7 +8437,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Additional line" >
+    <div class="w3-panel w3-leftbar w3-sand Additional line manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8413,7 +8466,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_368_en" >
@@ -8423,7 +8476,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8452,7 +8505,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8481,7 +8534,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_371_en" >
@@ -8491,7 +8544,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8520,7 +8573,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8549,7 +8602,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_374_en" >
@@ -8559,7 +8612,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8588,7 +8641,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8617,7 +8670,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_377_en" >
@@ -8627,7 +8680,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8656,7 +8709,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8685,7 +8738,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_380_en" >
@@ -8695,7 +8748,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8724,7 +8777,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8753,7 +8806,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_383_en" >
@@ -8763,7 +8816,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8792,7 +8845,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8821,7 +8874,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_386_en" >
@@ -8831,7 +8884,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8860,7 +8913,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8889,7 +8942,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_389_en" >
@@ -8899,7 +8952,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8928,7 +8981,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8957,7 +9010,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_392_en" >
@@ -8967,7 +9020,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -8996,7 +9049,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9025,7 +9078,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_395_en" >
@@ -9035,7 +9088,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9064,7 +9117,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9093,7 +9146,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_398_en" >
@@ -9103,7 +9156,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9132,7 +9185,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9161,7 +9214,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_401_en" >
@@ -9171,7 +9224,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9200,7 +9253,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9229,7 +9282,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_404_en" >
@@ -9239,7 +9292,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9268,7 +9321,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9297,7 +9350,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_407_en" >
@@ -9307,7 +9360,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9336,7 +9389,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9365,7 +9418,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_410_en" >
@@ -9375,7 +9428,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9404,7 +9457,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9433,7 +9486,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_413_en" >
@@ -9443,7 +9496,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9472,7 +9525,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9501,7 +9554,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_416_en" >
@@ -9511,7 +9564,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9540,7 +9593,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9569,7 +9622,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_419_en" >
@@ -9579,7 +9632,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9608,7 +9661,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9637,7 +9690,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_422_en" >
@@ -9647,7 +9700,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9676,7 +9729,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9705,7 +9758,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_425_en" >
@@ -9715,7 +9768,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9744,7 +9797,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9773,7 +9826,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_428_en" >
@@ -9783,7 +9836,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9812,7 +9865,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9841,7 +9894,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_431_en" >
@@ -9851,7 +9904,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9880,7 +9933,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9909,7 +9962,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_434_en" >
@@ -9919,7 +9972,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9948,7 +10001,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -9977,7 +10030,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_437_en" >
@@ -9987,7 +10040,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -10016,7 +10069,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -10045,7 +10098,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_440_en" >
@@ -10055,7 +10108,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -10084,7 +10137,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -10113,7 +10166,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_443_en" >
@@ -10123,7 +10176,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -10152,7 +10205,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -10181,7 +10234,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_446_en" >
@@ -10191,7 +10244,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -10220,7 +10273,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -10249,7 +10302,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_449_en" >
@@ -10259,7 +10312,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -10288,7 +10341,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -10317,7 +10370,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_452_en" >
@@ -10327,7 +10380,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -10356,7 +10409,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -10385,7 +10438,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_455_en" >
@@ -10395,7 +10448,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -10424,7 +10477,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -10453,7 +10506,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_458_en" >
@@ -10463,7 +10516,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -10492,7 +10545,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -10521,7 +10574,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_461_en" >
@@ -10531,7 +10584,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -10560,7 +10613,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -10589,7 +10642,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_464_en" >
@@ -10599,7 +10652,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -10628,7 +10681,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -10657,7 +10710,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_467_en" >
@@ -10667,7 +10720,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -10696,7 +10749,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -10725,7 +10778,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand PassageNumber" >
+    <div class="w3-panel w3-leftbar w3-sand PassageNumber manytxt-top" >
         
         <div>
             <div class="w3-rest w3-border w3-round-xlarge" id="p_470_en" >
@@ -10735,7 +10788,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand Invocation" >
+    <div class="w3-panel w3-leftbar w3-sand Invocation manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
@@ -10764,7 +10817,7 @@
         
     </div>
     
-    <div class="w3-panel w3-leftbar w3-sand MainText" >
+    <div class="w3-panel w3-leftbar w3-sand MainText manytxt-top" >
         
        <div class="manytxt-en">
             <div class="w3-col" style="width:35px">
