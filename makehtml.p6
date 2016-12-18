@@ -5,7 +5,7 @@ use HTML::Template;
 sub MAIN ( 
         Str :$library = 'library.csv', 
         Str :$css = "manytexts.css", 
-        Str :$template = 'chinese.tmpl', 
+        Str :$template = 'normal.tmpl', 
         Str :$lib-template = 'library.tmpl',
         Str :$navbar = 'navbar.frag', 
         Str :$credits = 'credits.frag' 
