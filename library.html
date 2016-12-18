@@ -1,0 +1,628 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>ManyTexts</title>
+	<link rel="stylesheet" href="w3.css" />
+	<link rel="stylesheet" href="manytexts.css" />
+	<script>
+	var toggle_en = true;
+	var toggle_zh_tr = true;
+	var toggle_zh_sm = true;
+	function btnEffect( L_in, B_id ) {
+            switch (L_in) {
+                case 'en':
+                    Ldivs = document.getElementsByClassName("manytxt-en");
+                    if ( toggle_en ) {
+                        toggle_en = false;
+                        document.getElementById(B_id).innerHTML="English &#x2612;";
+                        for (var i=0; i< Ldivs.length; i++) {
+                            Ldivs[i].style.display="none";
+                        }
+                    } else {
+                        toggle_en = true;
+                       document.getElementById(B_id).innerHTML="English &#x2611;";
+                        for (var i=0; i< Ldivs.length; i++) {
+                            Ldivs[i].style.display="block";
+                        }
+                    }
+                    break;
+                    case 'zh-tr':
+                    Ldivs = document.getElementsByClassName("manytxt-zh-tr");
+                    if ( toggle_zh_tr ) {
+                        toggle_zh_tr = false;
+                        document.getElementById(B_id).innerHTML="简体 &#x2612;";
+                        for (var i=0; i< Ldivs.length; i++) {
+                            Ldivs[i].style.display="none";
+                        }
+                    } else {
+                        toggle_zh_tr = true;
+                       document.getElementById(B_id).innerHTML="简体 &#x2611;";
+                        for (var i=0; i< Ldivs.length; i++) {
+                            Ldivs[i].style.display="block";
+                        }
+                    }
+                    break;
+                    case 'zh-sm':
+                    Ldivs = document.getElementsByClassName("manytxt-zh-sm");
+                    if ( toggle_zh_sm ) {
+                        toggle_zh_sm = false;
+                        document.getElementById(B_id).innerHTML="繁體 &#x2612;";
+                        for (var i=0; i< Ldivs.length; i++) {
+                            Ldivs[i].style.display="none";
+                        }
+                    } else {
+                        toggle_zh_sm = true;
+                        document.getElementById(B_id).innerHTML="繁體 &#x2611;";
+                        for (var i=0; i< Ldivs.length; i++) {
+                            Ldivs[i].style.display="block";
+                        }
+                    }
+                    break;
+            }
+	}
+	</script>
+</head>
+<body>
+        <!-- Navigation bar code -->
+    <div class="w3-container w3-top">
+        <ul class="w3-navbar w3-center">
+            <li class="w3-hide-medium w3-hide-large w3-opennav w3-left w3-dropdown-hover"><a href="#" class="w3-hover-teal"><img src="extras.png"/></a>
+                <div class="w3-dropdown-content">
+                    <a href="library.html"><img src="books.svg"></a>
+                    <button onclick="btnEffect('en','main-en-a')" id="main-en-a" class="w3-btn w3-round-large w3-large w3-blue w3-hover-khaki">English &#x2611;</button>
+                    <button onclick="btnEffect('zh-tr','main-zh-tr-a')" id="main-zh-tr-a" class="w3-btn w3-round-large w3-large w3-blue w3-hover-khaki">简体 &#x2611;</button>
+                    <button onclick="btnEffect('zh-sm','main-zh-sm-a')" id="main-zh-sm-a" class="w3-btn w3-round-large w3-large w3-blue w3-hover-khaki">繁體 &#x2611;</button>
+                </div>
+            </li>
+            <li class="w3-left w3-hide-small"><a href="library.html" class="w3-hover-teal"><img src="books.svg"/></a></li>
+            <li class="w3-navitem"><img src="manytextslogo.png" class="w3-round-large"/></li>
+            <li class="w3-right w3-hide-small" ><a href="#" class="w3-hover-teal"><img src="colors.png"/></a></li>
+            <li class="w3-right w3-hide-small w3-dropdown-hover" ><a href="#" class="w3-hover-teal"><img src="language.svg"/></a>
+                <div class="w3-dropdown-content">
+                    <button onclick="btnEffect('en','main-en-b')" id="main-en-b" class="w3-btn w3-round-large w3-large w3-blue w3-hover-khaki">English &#x2611;</button>
+                    <button onclick="btnEffect('zh-tr','main-zh-tr-b')" id="main-zh-tr-b" class="w3-btn w3-round-large w3-large w3-blue w3-hover-khaki">简体 &#x2611;</button>
+                    <button onclick="btnEffect('zh-sm','main-zh-sm-b')" id="main-zh-sm-b" class="w3-btn w3-round-large w3-large w3-blue w3-hover-khaki">繁體 &#x2611;</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="w3-panel w3-sand w3-padding-16 w3-center">
+        <a href="index.html">
+            <img src="manytextslogo.png" style="align:center"/>
+        </a>
+    </div>
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryHeading" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >Prayers</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">禱文</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">祷文</p>
+                </div>
+        </div>
+    
+    
+    <a href="prayers.html">
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >Bahá’í Prayers</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">巴哈伊禱文</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">巴哈伊祷文</p>
+                </div>
+        </div>
+    </a>
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryHeading" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >Bahá’u’lláh</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">巴哈歐拉</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">巴哈欧拉</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >Epistle to the Son of the Wolf</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">致狼子書</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">致狼子书</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >Gems of Divine Mysteries</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">聖秘瑰寶</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">圣秘瑰宝</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >Gleanings from the Writings of Bahá’u’lláh</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">巴哈歐拉聖作選粹</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">巴哈欧拉圣作选粹</p>
+                </div>
+        </div>
+    
+    
+    <a href="hiddenwords.html">
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >The Hidden Words</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">隱言經</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">隐言经</p>
+                </div>
+        </div>
+    </a>
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >The Kitáb-i-Aqdas</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">亞格達斯經</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">亚格达斯经</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >The Kitáb-i-Íqán</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">篤信經 / 伊甘經</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">笃信经 / 伊甘经</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >Prayers and Meditations by Bahá’u’lláh</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">巴哈歐拉祈禱默思錄</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">巴哈欧拉祈祷默思录</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >The Seven Valleys and the Four Valleys</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">七谷經與四谷經</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">七谷经与四谷经</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >The Summons of the Lord of Hosts</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">萬軍之主的詔諭</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">万军之主的诏谕</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >The Tabernacle of Unity</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">大同聖帳</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">大同圣帐</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >Tablets of Bahá’u’lláh</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">巴哈歐拉書簡集</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">巴哈欧拉书简集</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryHeading" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >The Báb</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">巴孛</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">巴孛</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >Selections from the Writings of the Báb</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">巴孛文選</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">巴孛文选</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryHeading" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >‘Abdu’l-Bahá</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">阿博都巴哈</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">阿博都巴哈</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >Memorials of the Faithful</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">忠信群英傳</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">忠信群英传</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >Paris Talks</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">巴黎談話</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">巴黎谈话</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >The Promulgation of Universal Peace</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">弘揚世界和平</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">弘扬世界和平</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >The Secret of Divine Civilization</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">神聖文明的隱秘</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">神圣文明的隐秘</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >Selections from the Writings of ‘Abdu’l-Bahá</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">阿博都-巴哈文選</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">阿博都-巴哈文选</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >Some Answered Questions</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">已答之問</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">已答之问</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >Tablet to Dr. Auguste Forel</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">福雷爾書簡</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">福雷尔书简</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >Tablets of the Divine Plan</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">神聖計劃書簡集</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">神圣计划书简集</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >A Traveler’s Narrative</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">旅者見聞錄</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">旅者见闻录</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >Will and Testament of ‘Abdu’l-Bahá</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">阿博都-巴哈遺囑</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">阿博都-巴哈遗嘱</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryHeading" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >Shoghi Effendi</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">守基·阿芬第</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">守基·阿芬第</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >The Advent of Divine Justice</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">神聖正義的降臨</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">神圣正义的降临</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >Bahá’í Administration</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">巴哈伊教務管理</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">巴哈伊教务管理</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >Citadel of Faith</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">信仰堡壘</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">信仰堡垒</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >God Passes By</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">神臨記</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">神临记</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >The Promised Day Is Come</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">應許之日來臨</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">应许之日来临</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >This Decisive Hour</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">#####</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">#####</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >The World Order of Bahá’u’lláh</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">巴哈歐拉的世界秩序</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">巴哈欧拉的世界秩序</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryHeading" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >The Universal House of Justice</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">世界正義院</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">世界正义院</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >Letter to the World’s Religious Leaders</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">致世界各宗教領袖函</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">致世界各宗教领袖函</p>
+                </div>
+        </div>
+    
+    
+    
+        <div class="w3-panel w3-leftbar w3-sand LibraryText" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" >The Promise of World Peace</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr">#####</p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm">#####</p>
+                </div>
+        </div>
+    
+    
+</body>
+</html>

@@ -1,29 +1,68 @@
 /* first css */
 
-.Title_text div p {
+.BookTitle div p , .Title div p{
     text-align: center;
     font-weight: bold;
     font-size: 2.5em;
 }
 
-.Author_name div p {
+.BookAuthor div p {
     text-align: center;
     font-weight: bold;
     font-size: 2em;
 }
 
-.Index_header_text div p {
+.SectionText div p, .SectionHeading div p {
     text-align: center;
     font-weight: bold;
+    font-size: 2.3em;
+}
+
+.PassageNumber div p {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.PassageAuthor div p {
+    text-align: right;
+    font-weight: bold;
+    font-style: italic;
     font-size: 1.8em;
 }
 
-.Index_table_text div p {
-    
+.ExLogue div {
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
-.Subheader_number div p {
+.ExLogue div p {
     text-align: center;
     font-weight: bold;
-    font-size: 1.8em;
+    font-style: italic;
+    font-size: 1em;
+}
+
+.Invocation div p {
+    text-align: left;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 1.1em;
+}
+
+.LibraryHeading div p {
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.LibraryText div p {
+    text-align: left;
+    font-size: 1em;
+    margin-left:10%;
+}
+
+.CreditsText div p {
+    text-align: left;
+    font-size: 0.7em;
 }
