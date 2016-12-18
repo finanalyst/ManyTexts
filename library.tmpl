@@ -60,13 +60,6 @@
                     break;
             }
 	}
-	function d_tog(id) {
-            if ( document.getElementById(id).style.display == "none" ) { 
-                document.getElementById(id).style.display="block"; 
-            } else {
-                document.getElementById(id).style.display = "none";
-            }
-        }
 	</script>
 </head>
 <body>
@@ -77,47 +70,19 @@
         </a>
     </div>
     <TMPL_LOOP texts>
-    <div class="w3-panel w3-leftbar w3-sand <TMPL_VAR paratype>" >
-        <TMPL_IF num>
-        <div>
-            <div class="w3-rest w3-border w3-round-xlarge" id="p_<TMPL_VAR ref>_en" >
-                <p lang="en" ><TMPL_VAR eng></p>
-            </div>
+    <TMPL_IF file><a href="<TMPL_VAR link>"></TMPL_IF>
+        <div class="w3-panel w3-leftbar w3-sand <TMPL_VAR paratype>" >
+                <div class="w3-border w3-round-xlarge manytxt-en" >
+                    <p lang="en" ><TMPL_VAR eng></p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-tr" >
+                    <p lang="zh_tr"><TMPL_VAR zh_tr></p>
+                </div>
+                <div class="w3-border w3-round-xlarge manytxt-zh-sm" >
+                    <p lang="zh_sm"><TMPL_VAR zh_sm></p>
+                </div>
         </div>
-        <TMPL_ELSE>
-       <div class="manytxt-en">
-            <div class="w3-col" style="width:35px">
-                <button onclick="d_tog('p_<TMPL_VAR ref>_en')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">en</button>
-            </div>
-            <div class="w3-rest w3-border w3-round-xlarge" id="p_<TMPL_VAR ref>_en" >
-                <p lang="en" ><TMPL_VAR eng></p>
-            </div>
-        </div>
-        <div class="manytxt-zh-tr">
-            <div class="w3-col" style="width:35px">
-                <button onclick="d_tog('p_<TMPL_VAR ref>_zh_tr')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">简体</button>
-            </div>
-            <div class="w3-rest w3-border w3-round-xlarge" id="p_<TMPL_VAR ref>_zh_tr" >
-                <p lang="zh_tr"><TMPL_VAR zh_tr></p>
-            </div>
-        </div>
-        <div class="manytxt-zh-sm">
-            <div class="w3-col" style="width:35px">
-                <button onclick="d_tog('p_<TMPL_VAR ref>_zh_sm')" class="w3-btn w3-padding-tiny w3-round-large w3-tiny w3-blue w3-hover-khaki">繁體</button>
-            </div>
-            <div class="w3-rest w3-border w3-round-xlarge" id="p_<TMPL_VAR ref>_zh_sm" >
-                <p lang="zh_sm"><TMPL_VAR zh_sm></p>
-            </div>
-        </div>
-        </TMPL_IF>
-    </div>
+    <TMPL_IF file></a></TMPL_IF>
     </TMPL_LOOP>
-    <TMPL_IF credit_on>
-        <div class="w3-panel w3-leftbar w3-sand CreditsText" >       
-            <div class="w3-rest w3-border w3-round-xlarge" >
-                <TMPL_VAR credits>
-            </div>
-        </div>
-    </TMPL_IF>
 </body>
 </html>

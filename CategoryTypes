@@ -1,0 +1,21 @@
+BookAuthor             for the whole text
+PassageAuthor              when an author of a prayer or quotation is placed after the text
+BookSource             for where the whole text comes from
+Citation                   for text that explains where a quotation comes from
+BookTitle                 for example, Kitab-i-Iqan
+AlternateBookTitle  for example, Book of Certitude
+TranslatorName      for example, Shoghi Effendi or UHJ Committee
+CompilationName   for example, American Baha'i Publishing Trust, or UK Baha'i Publishing Trust. For prayer books, there are many different collections.
+PassageNumber      this would be used in Hidden words, or in Gleanings, also some prayer collections
+SectionText             This would be used in some texts, eg. Hidden Words, 'From the Arabic'
+Invocation               In many prayers, Abdu'l-Baha would start 'He is God'. In the Hidden Words, lines like 'O Son of Spirit' would be an invocation rather than a header
+MainText                 for the main text
+Quotation                Shoghi Effendi and the UHJ often quote the Central Figures, so this needs to be set off.
+ExLogue                  In many texts, there is an introductory text (often called a Prologue), or a conclusion text (Epilogue). ExLogue comines Prologue and Epilogue
+Reference               Some texts have references, eg., to the Quran
+Footnote                 Some texts have footnotes, eg. God Passes By has footnotes nearly half a page long.
+
+Span classes - not being coded yet, but we need to think about it.
+InLineQuotation     Used for quotations inside a paragraph.
+PageNumber          Whilst page numbers refer to physical books, sometimes it is useful to have them
+ParaNumber           This is actually a more important reference for digital media.
