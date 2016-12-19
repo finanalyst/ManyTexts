@@ -71,7 +71,10 @@
     </div>
     <TMPL_LOOP texts>
     <TMPL_IF file><a href="<TMPL_VAR link>"></TMPL_IF>
-        <div class="w3-panel w3-leftbar w3-sand <TMPL_VAR paratype>" >
+        <div class="w3-panel w3-leftbar w3-sand 
+            <TMPL_VAR paratype>
+            <TMPL_IF file> w3-leftbar w3-pale-blue w3-border-blue</TMPL_IF>"
+            >
                 <div class="w3-border w3-round-xlarge manytxt-en" >
                     <p lang="en" ><TMPL_VAR eng></p>
                 </div>
